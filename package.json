@@ -1,0 +1,57 @@
+{
+  "name": "drinkable-city",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@12.18.0",
+  "engines": {
+    "node": ">=24 <25"
+  },
+  "scripts": {
+    "dev": "next dev --hostname 0.0.0.0",
+    "build": "next build && pnpm build:jobs && node scripts/prepare-standalone.mjs",
+    "build:jobs": "esbuild scripts/manage.ts src/jobs/worker.ts --bundle --platform=node --packages=external --format=esm --outdir=dist --outbase=.",
+    "start": "node --env-file-if-exists=.env --env-file-if-exists=.env.local .next/standalone/server.js",
+    "typecheck": "next typegen && tsc --noEmit",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test": "vitest run",
+    "test:integration": "vitest run --config vitest.integration.config.ts",
+    "test:e2e": "playwright test",
+    "db:migrate": "node --env-file-if-exists=.env --env-file-if-exists=.env.local --import tsx scripts/manage.ts migrate",
+    "db:seed": "node --env-file-if-exists=.env --env-file-if-exists=.env.local --import tsx scripts/manage.ts seed",
+    "admin:create": "node --env-file-if-exists=.env --env-file-if-exists=.env.local --import tsx scripts/manage.ts admin",
+    "worker": "node --env-file-if-exists=.env --env-file-if-exists=.env.local --import tsx src/jobs/worker.ts"
+  },
+  "dependencies": {
+    "next": "16.4.5",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "better-auth": "1.7.18",
+    "drizzle-orm": "0.45.4",
+    "pg": "8.23.1",
+    "pg-boss": "12.38.1",
+    "zod": "4.6.7",
+    "maplibre-gl": "6.17.0",
+    "nodemailer": "10.4.0",
+    "sharp": "0.35.5",
+    "pino": "10.4.0"
+  },
+  "devDependencies": {
+    "typescript": "5.9.3",
+    "@types/node": "^24",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "@types/pg": "8.23.1",
+    "@types/nodemailer": "latest",
+    "tsx": "4.23.15",
+    "esbuild": "0.28.2",
+    "vitest": "5.1.0",
+    "@playwright/test": "1.65.0",
+    "@axe-core/playwright": "4.14.0",
+    "eslint": "10.14.0",
+    "eslint-config-next": "16.4.5",
+    "prettier": "3.9.10"
+  }
+}

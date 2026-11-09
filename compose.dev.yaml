@@ -1,0 +1,17 @@
+services:
+  web:
+    image: drinkable:dev
+    build:
+      target: development
+    entrypoint: []
+    command: [pnpm, dev]
+    environment:
+      NODE_ENV: development
+    volumes:
+      - .:/app
+      - development_modules:/app/node_modules
+      - development_next:/app/.next
+      - media:/app/data/media
+volumes:
+  development_modules:
+  development_next:

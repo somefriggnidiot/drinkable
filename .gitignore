@@ -1,0 +1,14 @@
+node_modules/
+.next/
+dist/
+.env
+.env.*
+!.env.example
+data/
+backups/
+test-results/
+playwright-report/
+coverage/
+*.tsbuildinfo
+next-env.d.ts
+.pnpm-store/

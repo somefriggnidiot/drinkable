@@ -1,0 +1,36 @@
+services:
+  web:
+    environment:
+      NODE_ENV: production
+      DEPLOYMENT_ENV: production
+    ports: !reset []
+  worker:
+    environment:
+      NODE_ENV: production
+      DEPLOYMENT_ENV: production
+  migrate:
+    environment:
+      NODE_ENV: production
+      DEPLOYMENT_ENV: production
+  mailpit:
+    profiles: [local-mail]
+    ports: !reset []
+  proxy:
+    image: caddy:2.10-alpine
+    environment:
+      SITE_DOMAIN: ${SITE_DOMAIN:?Set SITE_DOMAIN}
+      ACME_EMAIL: ${ACME_EMAIL:?Set ACME_EMAIL}
+    ports: [80:80, 443:443, 443:443/udp]
+    volumes:
+      [
+        ./infra/Caddyfile:/etc/caddy/Caddyfile:ro,
+        caddy_data:/data,
+        caddy_config:/config,
+      ]
+    networks: [internal]
+    restart: unless-stopped
+    depends_on:
+      web: { condition: service_healthy }
+volumes:
+  caddy_data:
+  caddy_config:

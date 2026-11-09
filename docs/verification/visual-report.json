@@ -1,0 +1,326 @@
+[
+  {
+    "name": "home",
+    "width": 390,
+    "status": 200,
+    "errors": [],
+    "overflow": false,
+    "heading": "38px",
+    "font": "Roboto, Arial, sans-serif"
+  },
+  {
+    "name": "browse",
+    "width": 390,
+    "status": 200,
+    "errors": [],
+    "overflow": false,
+    "heading": "16px",
+    "font": "Roboto, Arial, sans-serif"
+  },
+  {
+    "name": "map",
+    "width": 390,
+    "status": 200,
+    "errors": [],
+    "overflow": false,
+    "heading": "16px",
+    "font": "Roboto, Arial, sans-serif"
+  },
+  {
+    "name": "detail",
+    "width": 390,
+    "status": 200,
+    "errors": [],
+    "overflow": false,
+    "heading": "28px",
+    "font": "Roboto, Arial, sans-serif"
+  },
+  {
+    "name": "faq",
+    "width": 390,
+    "status": 200,
+    "errors": [],
+    "overflow": false,
+    "heading": "28px",
+    "font": "Roboto, Arial, sans-serif"
+  },
+  {
+    "name": "contact",
+    "width": 390,
+    "status": 200,
+    "errors": [],
+    "overflow": false,
+    "heading": "28px",
+    "font": "Roboto, Arial, sans-serif"
+  },
+  {
+    "name": "account",
+    "width": 390,
+    "status": 200,
+    "errors": [],
+    "overflow": false,
+    "heading": null,
+    "font": "Roboto, Arial, sans-serif"
+  },
+  {
+    "name": "privacy",
+    "width": 390,
+    "status": 200,
+    "errors": [],
+    "overflow": false,
+    "heading": "28px",
+    "font": "Roboto, Arial, sans-serif"
+  },
+  {
+    "name": "terms",
+    "width": 390,
+    "status": 200,
+    "errors": [],
+    "overflow": false,
+    "heading": "28px",
+    "font": "Roboto, Arial, sans-serif"
+  },
+  {
+    "name": "home",
+    "width": 768,
+    "status": 200,
+    "errors": [],
+    "overflow": false,
+    "heading": "50px",
+    "font": "Roboto, Arial, sans-serif"
+  },
+  {
+    "name": "browse",
+    "width": 768,
+    "status": 200,
+    "errors": [],
+    "overflow": false,
+    "heading": "16px",
+    "font": "Roboto, Arial, sans-serif"
+  },
+  {
+    "name": "map",
+    "width": 768,
+    "status": 200,
+    "errors": [],
+    "overflow": false,
+    "heading": "16px",
+    "font": "Roboto, Arial, sans-serif"
+  },
+  {
+    "name": "detail",
+    "width": 768,
+    "status": 200,
+    "errors": [],
+    "overflow": false,
+    "heading": "30px",
+    "font": "Roboto, Arial, sans-serif"
+  },
+  {
+    "name": "faq",
+    "width": 768,
+    "status": 200,
+    "errors": [],
+    "overflow": false,
+    "heading": "30px",
+    "font": "Roboto, Arial, sans-serif"
+  },
+  {
+    "name": "contact",
+    "width": 768,
+    "status": 200,
+    "errors": [],
+    "overflow": false,
+    "heading": "30px",
+    "font": "Roboto, Arial, sans-serif"
+  },
+  {
+    "name": "account",
+    "width": 768,
+    "status": 200,
+    "errors": [],
+    "overflow": false,
+    "heading": null,
+    "font": "Roboto, Arial, sans-serif"
+  },
+  {
+    "name": "privacy",
+    "width": 768,
+    "status": 200,
+    "errors": [],
+    "overflow": false,
+    "heading": "30px",
+    "font": "Roboto, Arial, sans-serif"
+  },
+  {
+    "name": "terms",
+    "width": 768,
+    "status": 200,
+    "errors": [],
+    "overflow": false,
+    "heading": "30px",
+    "font": "Roboto, Arial, sans-serif"
+  },
+  {
+    "name": "home",
+    "width": 1024,
+    "status": 200,
+    "errors": [],
+    "overflow": false,
+    "heading": "50px",
+    "font": "Roboto, Arial, sans-serif"
+  },
+  {
+    "name": "browse",
+    "width": 1024,
+    "status": 200,
+    "errors": [],
+    "overflow": false,
+    "heading": "16px",
+    "font": "Roboto, Arial, sans-serif"
+  },
+  {
+    "name": "map",
+    "width": 1024,
+    "status": 200,
+    "errors": [],
+    "overflow": false,
+    "heading": "16px",
+    "font": "Roboto, Arial, sans-serif"
+  },
+  {
+    "name": "detail",
+    "width": 1024,
+    "status": 200,
+    "errors": [],
+    "overflow": false,
+    "heading": "30px",
+    "font": "Roboto, Arial, sans-serif"
+  },
+  {
+    "name": "faq",
+    "width": 1024,
+    "status": 200,
+    "errors": [],
+    "overflow": false,
+    "heading": "30px",
+    "font": "Roboto, Arial, sans-serif"
+  },
+  {
+    "name": "contact",
+    "width": 1024,
+    "status": 200,
+    "errors": [],
+    "overflow": false,
+    "heading": "30px",
+    "font": "Roboto, Arial, sans-serif"
+  },
+  {
+    "name": "account",
+    "width": 1024,
+    "status": 200,
+    "errors": [],
+    "overflow": false,
+    "heading": null,
+    "font": "Roboto, Arial, sans-serif"
+  },
+  {
+    "name": "privacy",
+    "width": 1024,
+    "status": 200,
+    "errors": [],
+    "overflow": false,
+    "heading": "30px",
+    "font": "Roboto, Arial, sans-serif"
+  },
+  {
+    "name": "terms",
+    "width": 1024,
+    "status": 200,
+    "errors": [],
+    "overflow": false,
+    "heading": "30px",
+    "font": "Roboto, Arial, sans-serif"
+  },
+  {
+    "name": "home",
+    "width": 1440,
+    "status": 200,
+    "errors": [],
+    "overflow": false,
+    "heading": "50px",
+    "font": "Roboto, Arial, sans-serif"
+  },
+  {
+    "name": "browse",
+    "width": 1440,
+    "status": 200,
+    "errors": [],
+    "overflow": false,
+    "heading": "16px",
+    "font": "Roboto, Arial, sans-serif"
+  },
+  {
+    "name": "map",
+    "width": 1440,
+    "status": 200,
+    "errors": [],
+    "overflow": false,
+    "heading": "16px",
+    "font": "Roboto, Arial, sans-serif"
+  },
+  {
+    "name": "detail",
+    "width": 1440,
+    "status": 200,
+    "errors": [],
+    "overflow": false,
+    "heading": "30px",
+    "font": "Roboto, Arial, sans-serif"
+  },
+  {
+    "name": "faq",
+    "width": 1440,
+    "status": 200,
+    "errors": [],
+    "overflow": false,
+    "heading": "30px",
+    "font": "Roboto, Arial, sans-serif"
+  },
+  {
+    "name": "contact",
+    "width": 1440,
+    "status": 200,
+    "errors": [],
+    "overflow": false,
+    "heading": "30px",
+    "font": "Roboto, Arial, sans-serif"
+  },
+  {
+    "name": "account",
+    "width": 1440,
+    "status": 200,
+    "errors": [],
+    "overflow": false,
+    "heading": null,
+    "font": "Roboto, Arial, sans-serif"
+  },
+  {
+    "name": "privacy",
+    "width": 1440,
+    "status": 200,
+    "errors": [],
+    "overflow": false,
+    "heading": "30px",
+    "font": "Roboto, Arial, sans-serif"
+  },
+  {
+    "name": "terms",
+    "width": 1440,
+    "status": 200,
+    "errors": [],
+    "overflow": false,
+    "heading": "30px",
+    "font": "Roboto, Arial, sans-serif"
+  }
+]

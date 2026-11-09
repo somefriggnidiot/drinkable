@@ -1,0 +1,17 @@
+node_modules
+.next
+.git
+.env
+.env.*
+!.env.example
+data
+backups
+dist
+test-results
+playwright-report
+coverage
+docs/reference/screenshots
+*.tsbuildinfo
+.agents
+.codex
+.aws

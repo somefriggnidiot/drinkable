@@ -1,0 +1,105 @@
+name: drinkable
+x-app: &app
+  image: ${DRINKABLE_IMAGE:-drinkable:local}
+  build:
+    context: .
+    target: runtime
+    args:
+      NEXT_PUBLIC_MAPTILER_KEY: ${NEXT_PUBLIC_MAPTILER_KEY:-}
+      NEXT_PUBLIC_ADSENSE_CLIENT: ${NEXT_PUBLIC_ADSENSE_CLIENT:-}
+      NEXT_PUBLIC_ADSENSE_HOME_SLOT: ${NEXT_PUBLIC_ADSENSE_HOME_SLOT:-}
+      NEXT_PUBLIC_ADSENSE_RESULTS_SLOT: ${NEXT_PUBLIC_ADSENSE_RESULTS_SLOT:-}
+      NEXT_PUBLIC_ADSENSE_DETAIL_SLOT: ${NEXT_PUBLIC_ADSENSE_DETAIL_SLOT:-}
+      NEXT_PUBLIC_COOKIEYES_ID: ${NEXT_PUBLIC_COOKIEYES_ID:-}
+  env_file: .env
+  environment: &app-env
+    DATABASE_URL: postgresql://drinkable:${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}@db:5432/drinkable
+    MEDIA_ROOT: /app/data/media
+  init: true
+  networks: [internal]
+  restart: unless-stopped
+  security_opt: [no-new-privileges:true]
+  cap_drop: [ALL]
+services:
+  db:
+    image: postgis/postgis:17-3.5
+    environment:
+      POSTGRES_USER: drinkable
+      POSTGRES_DB: drinkable
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}
+    volumes: [database:/var/lib/postgresql/data]
+    networks: [internal]
+    restart: unless-stopped
+    healthcheck:
+      test: [CMD-SHELL, pg_isready -U drinkable -d drinkable]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+  migrate:
+    <<: *app
+    command: [node, dist/scripts/manage.js, migrate]
+    restart: "no"
+    depends_on:
+      db: { condition: service_healthy }
+  web:
+    <<: *app
+    ports: [127.0.0.1:3000:3000]
+    volumes: [media:/app/data/media]
+    depends_on:
+      migrate: { condition: service_completed_successfully }
+    healthcheck:
+      test:
+        [
+          CMD,
+          node,
+          -e,
+          "fetch('http://127.0.0.1:3000/api/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))",
+        ]
+      interval: 20s
+      timeout: 8s
+      retries: 5
+      start_period: 40s
+  worker:
+    <<: *app
+    command: [node, dist/src/jobs/worker.js]
+    volumes: [media:/app/data/media]
+    depends_on:
+      migrate: { condition: service_completed_successfully }
+    healthcheck:
+      test:
+        [
+          CMD,
+          node,
+          --input-type=module,
+          -e,
+          'import pg from ''pg'';const c=new pg.Client({connectionString:process.env.DATABASE_URL});await c.connect();const r=await c.query("SELECT 1 FROM worker_heartbeat WHERE touched_at>now()-interval ''2 minutes''");await c.end();process.exit(r.rowCount?0:1)',
+        ]
+      interval: 30s
+      timeout: 8s
+      retries: 4
+  mailpit:
+    image: axllent/mailpit:v1.27
+    ports: [127.0.0.1:8025:8025]
+    networks: [internal]
+    restart: unless-stopped
+  backup:
+    image: postgis/postgis:17-3.5
+    profiles: [backup]
+    environment:
+      PGHOST: db
+      PGUSER: drinkable
+      PGDATABASE: drinkable
+      PGPASSWORD: ${POSTGRES_PASSWORD}
+      BACKUP_RETENTION_DAYS: ${BACKUP_RETENTION_DAYS:-14}
+    volumes:
+      [media:/media:ro, ./backups:/backups, ./infra/backup.sh:/backup.sh:ro]
+    entrypoint: [sh, /backup.sh]
+    networks: [internal]
+    depends_on:
+      db: { condition: service_healthy }
+    restart: unless-stopped
+networks:
+  internal:
+volumes:
+  database:
+  media:

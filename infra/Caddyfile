@@ -1,0 +1,16 @@
+{
+  email {$ACME_EMAIL}
+}
+{$SITE_DOMAIN} {
+  encode zstd gzip
+  request_body {
+    max_size 12MB
+  }
+  reverse_proxy web:3000 {
+    header_up X-Real-IP {remote_host}
+  }
+  log {
+    output stdout
+    format json
+  }
+}
